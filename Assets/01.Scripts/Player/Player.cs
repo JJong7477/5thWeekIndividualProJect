@@ -14,6 +14,7 @@ public class Player : MonoBehaviour
     public string Name { get; private set; } = "new Player";
 
     public int Level { get; private set; } = 1;
+    public int Exp { get; private set; } = 2;
     public int Gold { get; private set; } = 190000;
     
     public float AddedAttack { get; private set; }

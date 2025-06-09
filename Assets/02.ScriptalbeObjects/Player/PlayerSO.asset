@@ -12,3 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 112c30e18a4f17640b5b59cd48ddb557, type: 3}
   m_Name: PlayerSO
   m_EditorClassIdentifier: 
+  baseAttack: 35
+  baseArmor: 40
+  baseHealth: 100
+  baseCriticalChance: 25

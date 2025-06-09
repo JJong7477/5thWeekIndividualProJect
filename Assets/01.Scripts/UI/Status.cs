@@ -4,15 +4,13 @@ using UnityEngine;
 
 public class Status : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public void OpenStatus()
     {
-        
+        this.gameObject.SetActive(true);
     }
 
-    // Update is called once per frame
-    void Update()
+    public void CloseStatus()
     {
-        
+        this.gameObject.SetActive(false);
     }
 }

@@ -1,11 +1,15 @@
 using System;
 using UnityEngine;
 
-public class UiManager : MonoBehaviour
+public class UIManager : MonoBehaviour
 {
-    private static UiManager _uiManager;
+    [field:SerializeField] public MainMenu MainMenu { get; private set; }
+    [field:SerializeField] public Status Status { get; private set; }
+    [field:SerializeField] public Inventory Inventory { get; private set; }
+    
+    private static UIManager _uiManager;
 
-    public static UiManager UIManager
+    public static UIManager Instance
     {
         get
         {
@@ -17,16 +21,12 @@ public class UiManager : MonoBehaviour
         }
     }
     
-    [SerializeField] public MainMenu mainMenu;
-    [SerializeField] public Status status;
-    [SerializeField] public Inventory inventory;
-
     private void Awake()
     {
         if (_uiManager == null)
         {
             _uiManager = this;
-            DontDestroyOnLoad(this);
+            DontDestroyOnLoad(this.gameObject);
         }
         else
         {
