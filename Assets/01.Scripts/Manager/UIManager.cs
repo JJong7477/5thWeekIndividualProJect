@@ -32,5 +32,7 @@ public class UIManager : MonoBehaviour
         {
             Destroy(this);
         }
+        
+        Inventory.Init();
     }
 }
