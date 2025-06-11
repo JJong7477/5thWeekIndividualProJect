@@ -1,46 +1,43 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class Inventory : MonoBehaviour
 {
-    [SerializeField] private TextMeshProUGUI playerInventory;
-    [SerializeField] private Transform itemSlotContainer;
-    [SerializeField] private GameObject itemSlotPrefab;
-    [SerializeField] private ItemSlot[] itemSlots;
-    
+    [SerializeField] private InventoryUI inventoryUI;
+    public List<Item> items = new List<Item>();
+
     private void Reset()
     {
-        playerInventory = Utility.FindChildComponent<TextMeshProUGUI>(transform, "PlayerInventory");
+        inventoryUI = this.gameObject.GetComponent<InventoryUI>();
     }
 
-    public void Init()
+    private void Start()
     {
-        itemSlotContainer = Utility.FindChildInChild(transform, "Content");
+        AddItem(4);
+        AddItem(1);
+        AddItem(5);
+        AddItem(3);
+        AddItem(2);
+    }
+
+    public void AddItem(int itemNum)
+    {
+        inventoryUI.AddItem(itemNum, FindFirstEmptySlot());
+        items.Add(ItemDataManager.Instance.items[itemNum].CreateItem());
+    }
+
+    public int FindFirstEmptySlot()
+    {
+        if (items.Count >= inventoryUI.itemSlots.Length) return -1;
         
-        itemSlots = new ItemSlot[36];
-
-        for (int i = 0; i < itemSlots.Length; i++)
-        {
-            CreateItemSlots(i);
-        }
+        return items.Count;
     }
-
-    private void CreateItemSlots(int index)
+    
+    public void RemoveItem(Item item, int index)
     {
-        GameObject go = Instantiate(itemSlotPrefab, itemSlotContainer);
-        itemSlots[index] = go.GetComponent<ItemSlot>();
-    }
-
-    public void OpenInventory()
-    {
-        this.gameObject.SetActive(true);
-    }
-
-    public void CloseInventory()
-    {
-        this.gameObject.SetActive(false);
+        inventoryUI.RemoveItem(index);
+        items.Remove(item);
     }
 }

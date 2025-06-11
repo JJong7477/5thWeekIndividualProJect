@@ -5,7 +5,7 @@ public class UIManager : MonoBehaviour
 {
     [field:SerializeField] public MainMenu MainMenu { get; private set; }
     [field:SerializeField] public Status Status { get; private set; }
-    [field:SerializeField] public Inventory Inventory { get; private set; }
+    [field:SerializeField] public InventoryUI InventoryUI { get; private set; }
     
     private static UIManager _uiManager;
 
@@ -33,6 +33,6 @@ public class UIManager : MonoBehaviour
             Destroy(this);
         }
         
-        Inventory.Init();
+        InventoryUI.Init();
     }
 }

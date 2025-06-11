@@ -14,8 +14,6 @@ public class MainMenu : MonoBehaviour
     [SerializeField] private TextMeshProUGUI playerGold;
     [SerializeField] private Image playerExpImage;
     
-    [SerializeField] private Button statusButton;
-    [SerializeField] private Button inventoryButton;
 
     private void Start()
     {

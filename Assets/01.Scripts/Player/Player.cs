@@ -11,7 +11,7 @@ public class Player : MonoBehaviour
 {
     public PlayerSO playerSo;
     
-    public string Name { get; private set; } = "new Player";
+    public string Name { get; private set; } = "Meri";
 
     public int Level { get; private set; } = 1;
     public int Exp { get; private set; } = 2;
